@@ -1,4 +1,4 @@
-# English | [繁體中文](README.md)
+# [![Language](https://img.shields.io/badge/Language-English-blue.svg)](README_EN.md) [![Language](https://img.shields.io/badge/語言-繁體中文-red.svg)](README.md)
 ---
 
 # MapLock 🗺️ 🔒
