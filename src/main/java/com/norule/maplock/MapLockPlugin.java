@@ -1,5 +1,6 @@
 package com.norule.maplock;
 
+import org.bstats.bukkit.Metrics;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -60,7 +61,11 @@ public final class MapLockPlugin extends JavaPlugin implements Listener, Command
             getCommand("map").setTabCompleter(this);
         }
 
-        getLogger().info("MapLock 1.1 has been successfully enabled on " + getServer().getName());
+        // 啟動 bStats (12345 請換成你在官網申請的 Plugin ID)
+        int pluginId = 12345;
+        Metrics metrics = new Metrics(this, pluginId);
+
+        getLogger().info("MapLock v1.1.1 has been successfully enabled! (Spigot/Folia Supported)");
     }
 
     private boolean setupEconomy() {
@@ -185,7 +190,6 @@ public final class MapLockPlugin extends JavaPlugin implements Listener, Command
             return true;
         }
 
-        // --- 以下為 Lock/Unlock ---
         List<String> disabledWorlds = getConfig().getStringList("disabled-worlds");
         if (disabledWorlds.contains(player.getWorld().getName()) && !player.hasPermission("maplock.admin.bypass")) {
             if (subCommand.equals("lock") || subCommand.equals("unlock")) {
